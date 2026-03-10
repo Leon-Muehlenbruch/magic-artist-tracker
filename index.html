@@ -112,6 +112,28 @@
 
     /* ── EVENT CARD ── */
     .event-block {}
+    .event-block.is-past .event-body {
+      display: none;
+    }
+    .event-block.is-past.expanded .event-body {
+      display: block;
+    }
+    .event-block.is-past .event-header {
+      cursor: pointer;
+      opacity: 0.65;
+      transition: opacity 0.2s;
+    }
+    .event-block.is-past .event-header:hover {
+      opacity: 1;
+    }
+    .collapse-chevron {
+      margin-left: 0.5rem;
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+    .event-block.is-past.expanded .collapse-chevron {
+      transform: rotate(180deg);
+    }
 
     .event-header {
       display: flex;
@@ -719,13 +741,13 @@ function renderEvents() {
     const isPast = (ev.dateEnd ? new Date(ev.dateEnd) : dateObj) < new Date();
 
     const block = document.createElement('div');
-    block.className = 'event-block';
+    block.className = 'event-block' + (isPast ? ' is-past' : '');
     block.id = 'event-' + ev.id;
 
     block.innerHTML = `
       <div class="event-header">
         <div class="event-meta">
-          <div class="event-name">${ev.name}</div>
+          <div class="event-name">${ev.name}${isPast ? '<span class="collapse-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>' : ''}</div>
           <div class="event-details">
             <span class="event-detail">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -741,10 +763,19 @@ function renderEvents() {
         <span class="event-badge">${isPast ? 'Past Event' : 'Upcoming'}</span>
       </div>
 
-      <div class="artists-label">${ev.artists.length} Artist${ev.artists.length !== 1 ? 's' : ''}</div>
-      <div class="artists-grid" id="artists-${ev.id}"></div>
+      <div class="event-body">
+        <div class="artists-label">${ev.artists.length} Artist${ev.artists.length !== 1 ? 's' : ''}</div>
+        <div class="artists-grid" id="artists-${ev.id}"></div>
+      </div>
     `;
     container.appendChild(block);
+
+    if (isPast) {
+      block.querySelector('.event-header').addEventListener('click', (e) => {
+        if (e.target.closest('a')) return; // don't toggle when clicking website link
+        block.classList.toggle('expanded');
+      });
+    }
 
     const artistsGrid = document.getElementById('artists-' + ev.id);
 
