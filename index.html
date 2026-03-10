@@ -44,6 +44,8 @@
       z-index: 100;
       backdrop-filter: blur(12px);
     }
+    .header-left { display: flex; align-items: center; gap: 0; }
+    .header-right { display: flex; align-items: center; gap: 0.5rem; }
 
     .hamburger {
       background: none;
@@ -63,20 +65,47 @@
 
     .logo {
       font-family: 'Cinzel', serif;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 800;
-      background: linear-gradient(135deg, var(--accent), #e8c87a);
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: baseline;
+      gap: 0.45rem;
+      user-select: none;
+    }
+    .logo-magic {
+      color: var(--text);
+      opacity: 0.9;
+    }
+    .logo-artist {
+      background: linear-gradient(135deg, var(--accent) 0%, #f0d080 50%, var(--accent) 100%);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: 0.04em;
+      animation: shimmer 4s linear infinite;
+    }
+    .logo-tracker {
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .logo-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent2);
+      margin-bottom: 2px;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px var(--accent2);
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% center; }
+      100% { background-position: -200% center; }
     }
 
-    .logo span {
-      background: linear-gradient(135deg, var(--accent2), #a880f0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
+    .header-right nav { display: flex; gap: 0.5rem; }
     nav button {
       background: none;
       border: 1px solid var(--border);
@@ -720,17 +749,25 @@
 <body>
 
 <header>
-  <div style="display:flex;align-items:center">
+  <div class="header-left">
     <button class="hamburger" id="hamburger-btn" onclick="toggleSidebar()" title="Toggle navigation">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
       </svg>
     </button>
-    <div class="logo">Magic <span>Artist</span> Tracker</div>
-  <nav>
-    <button class="active" onclick="switchView('events', this)">Events</button>
-    <button onclick="switchView('admin', this)">✦ Admin</button>
-  </nav>
+    <div class="logo">
+      <span class="logo-magic">Magic</span>
+      <span class="logo-dot"></span>
+      <span class="logo-artist">Artist</span>
+      <span class="logo-tracker">Tracker</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <nav>
+      <button class="active" onclick="switchView('events', this)">Events</button>
+      <button onclick="switchView('admin', this)">✦ Admin</button>
+    </nav>
+  </div>
 </header>
 
 <div class="layout">
