@@ -977,7 +977,17 @@ function initScrollSpy() {
   document.querySelectorAll('.event-block').forEach(block => observer.observe(block));
 }
 
-// ── RENDER EVENTS ──function renderEvents() {
+function scryfallAllArtistsBtn(artists) {
+  const q = artists.map(function(a) { return 'a:"' + a + '"'; }).join(' or ');
+  const url = 'https://scryfall.com/search?q=' + encodeURIComponent(q) + '&unique=art&order=edhrec';
+  return '<a class="event-scryfall-btn" href="' + url + '" target="_blank" rel="noopener">'
+    + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'
+    + '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>'
+    + '<line x1="12" y1="17" x2="12.01" y2="17"/></svg> All Cards</a>';
+}
+
+// ── RENDER EVENTS ──
+function renderEvents() {
   const container = document.getElementById('events-container');
   if (!events.length) {
     container.innerHTML = '<div class="empty-state">No events yet. Add one in the Admin tab.</div>';
@@ -1018,7 +1028,7 @@ function initScrollSpy() {
               ${dateStr}
             </span>
             ${ev.url ? `<a class="event-website-btn" href="${ev.url}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Website</a>` : ''}
-            ${ev.artists.length > 0 ? (() => { const q = ev.artists.map(a => `a:"${a}"`).join(' or '); const url = 'https://scryfall.com/search?q=' + encodeURIComponent(q) + '&unique=art&order=edhrec'; return `<a class="event-scryfall-btn" href="${url}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> All Cards</a>`; })() : ''}
+            ${ev.artists.length > 0 ? scryfallAllArtistsBtn(ev.artists) : ''}
           </div>
         </div>
         <span class="event-badge">${isPast ? 'Past Event' : 'Upcoming'}</span>
