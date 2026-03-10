@@ -1,0 +1,109 @@
+[
+  {
+    "id": "ugems_rc_turin_2026",
+    "name": "Ultimate Guard European Magic Series – RC Turin 2026",
+    "location": "Turin, Italy",
+    "date": "2026-03-06",
+    "dateEnd": "2026-03-08",
+    "url": "https://www.fanfinity.gg/event/ultimate-guard-european-magic-series-regional-championship-turin-2026/",
+    "artists": [
+      "Matteo Bassini",
+      "Josu Solano",
+      "Jeff Laubenstein",
+      "Edgar Sánchez Hidalgo",
+      "Diego Gisbert",
+      "Xabi Gaztelua",
+      "Mirko Failoni",
+      "Shivanart"
+    ]
+  },
+  {
+    "id": "paupergeddon_spring_2026",
+    "name": "Paupergeddon Spring Edition 2026",
+    "location": "Lucca, Italy",
+    "date": "2026-03-20",
+    "dateEnd": "2026-03-22",
+    "url": "https://paupergeddon.com/index_eng.html#guests",
+    "artists": [
+      "Domenico Cava",
+      "Michele Giorgi",
+      "Alexis Ziritt",
+      "Paolo Parente",
+      "Dany Orizio",
+      "Randy Vargas",
+      "Milivoj Ceran"
+    ]
+  },
+  {
+    "id": "spotlight_london_2026",
+    "name": "Magic Spotlight Series: Secrets – London 2026",
+    "location": "London, United Kingdom",
+    "date": "2026-05-08",
+    "dateEnd": "2026-05-10",
+    "url": "https://www.fanfinity.gg/event/magic-spotlight-series-london-2026",
+    "artists": []
+  },
+  {
+    "id": "commandfest_giessen_2026",
+    "name": "CommandFest Giessen 2026",
+    "location": "Giessen, Germany",
+    "date": "2026-05-22",
+    "dateEnd": "2026-05-24",
+    "url": "https://jk-events.de/Commandfest/",
+    "artists": []
+  },
+  {
+    "id": "ugems_rc_prague_2026",
+    "name": "Ultimate Guard European Magic Series – RC Prague 2026",
+    "location": "Prague, Czech Republic",
+    "date": "2026-05-29",
+    "dateEnd": "2026-05-31",
+    "url": "https://www.fanfinity.gg/event/ultimate-guard-european-magic-series-regional-championship-prague-2026",
+    "artists": []
+  },
+  {
+    "id": "eternal_mania_2026",
+    "name": "Eternal Mania 2026",
+    "location": "Hasselt, Belgium",
+    "date": "2026-07-10",
+    "dateEnd": "2026-07-12",
+    "url": "https://www.eternalmania.com/artists/",
+    "artists": []
+  },
+  {
+    "id": "magiccon_amsterdam_2026",
+    "name": "MagicCon: Amsterdam 2026",
+    "location": "Amsterdam, Netherlands",
+    "date": "2026-07-17",
+    "dateEnd": "2026-07-19",
+    "url": "https://mcamsterdam.mtgfestivals.com/en-us/applications/join-the-art-of-magic.html",
+    "artists": []
+  },
+  {
+    "id": "spotlight_brussels_2026",
+    "name": "Magic Spotlight Series: Marvel Super Heroes – Brussels 2026",
+    "location": "Brussels, Belgium",
+    "date": "2026-07-24",
+    "dateEnd": "2026-07-26",
+    "url": "https://www.fanfinity.gg/event/magic-spotlight-series-brussels-2026/",
+    "artists": []
+  },
+  {
+    "id": "mtg_herne_2026",
+    "name": "MtG Event Herne 2026",
+    "location": "Herne, Germany",
+    "date": "2026-08-21",
+    "dateEnd": "2026-08-23",
+    "url": "",
+    "artists": []
+  },
+  {
+    "id": "commandfest_marl_2026",
+    "name": "CommandFest Marl 2026",
+    "location": "Marl, Germany",
+    "date": "2026-12-12",
+    "dateEnd": "2026-12-14",
+    "url": "https://jk-events.de/commandfest",
+    "artists": []
+  }
+]
