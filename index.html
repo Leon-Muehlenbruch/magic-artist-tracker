@@ -45,6 +45,22 @@
       backdrop-filter: blur(12px);
     }
 
+    .hamburger {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      cursor: pointer;
+      padding: 0.4rem 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+      margin-right: 0.75rem;
+    }
+    .hamburger:hover { background: var(--surface2); }
+    .hamburger svg { width: 18px; height: 18px; }
+
     .logo {
       font-family: 'Cinzel', serif;
       font-size: 1.25rem;
@@ -89,16 +105,33 @@
     .sidebar {
       width: 220px;
       flex-shrink: 0;
-      position: sticky;
+      position: fixed;
       top: 64px;
+      left: 0;
       height: calc(100vh - 64px);
       overflow-y: auto;
       padding: 2rem 0 2rem 1.5rem;
       border-right: 1px solid var(--border);
+      background: var(--bg);
       display: flex;
       flex-direction: column;
       gap: 0;
+      transform: translateX(-100%);
+      transition: transform 0.25s ease;
+      z-index: 90;
     }
+    .sidebar.open {
+      transform: translateX(0);
+      box-shadow: 4px 0 24px rgba(0,0,0,0.4);
+    }
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 64px 0 0 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 89;
+    }
+    .sidebar-overlay.open { display: block; }
 
     .sidebar-label {
       font-size: 0.65rem;
@@ -311,6 +344,21 @@
     }
     .event-website-btn:hover { opacity: 1; }
     .event-website-btn svg { width: 13px; height: 13px; }
+    .event-scryfall-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      border-radius: 6px;
+      padding: 0.2rem 0.6rem;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .event-scryfall-btn:hover { opacity: 1; }
+    .event-scryfall-btn svg { width: 13px; height: 13px; }
 
     .event-badge {
       display: inline-block;
@@ -672,7 +720,13 @@
 <body>
 
 <header>
-  <div class="logo">Magic <span>Artist</span> Tracker</div>
+  <div style="display:flex;align-items:center">
+    <button class="hamburger" id="hamburger-btn" onclick="toggleSidebar()" title="Toggle navigation">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="logo">Magic <span>Artist</span> Tracker</div>
   <nav>
     <button class="active" onclick="switchView('events', this)">Events</button>
     <button onclick="switchView('admin', this)">✦ Admin</button>
@@ -680,6 +734,7 @@
 </header>
 
 <div class="layout">
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-label">Events</div>
   <!-- filled by JS -->
@@ -795,6 +850,13 @@ async function init() {
     }
     initScrollSpy();
   }, 400);
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
 }
 
 function saveLocal() {
@@ -956,6 +1018,7 @@ function initScrollSpy() {
               ${dateStr}
             </span>
             ${ev.url ? `<a class="event-website-btn" href="${ev.url}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Website</a>` : ''}
+            ${ev.artists.length > 0 ? (() => { const q = ev.artists.map(a => `a:"${a}"`).join(' or '); const url = 'https://scryfall.com/search?q=' + encodeURIComponent(q) + '&unique=art&order=edhrec'; return `<a class="event-scryfall-btn" href="${url}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> All Cards</a>`; })() : ''}
           </div>
         </div>
         <span class="event-badge">${isPast ? 'Past Event' : 'Upcoming'}</span>
