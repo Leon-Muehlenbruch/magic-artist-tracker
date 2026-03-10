@@ -611,6 +611,20 @@ async function init() {
   renderEvents();
   renderAdminList();
   renderJSON();
+
+  // Scroll to the next upcoming event on load
+  setTimeout(() => {
+    const now = new Date();
+    const sorted = [...events].sort((a, b) => new Date(a.date) - new Date(b.date));
+    const nextEvent = sorted.find(ev => {
+      const endDate = ev.dateEnd ? new Date(ev.dateEnd) : new Date(ev.date);
+      return endDate >= now;
+    });
+    if (nextEvent) {
+      const el = document.getElementById('event-' + nextEvent.id);
+      if (el) el.scrollIntoView({ behavior: 'instant', block: 'start' });
+    }
+  }, 400);
 }
 
 function saveLocal() {
