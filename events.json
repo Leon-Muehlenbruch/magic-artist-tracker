@@ -1,7 +1,7 @@
 [
   {
     "id": "ugems_rc_turin_2026",
-    "name": "Ultimate Guard European Magic Series – RC Turin 2026",
+    "name": "Regional Championship Turin",
     "location": "Turin, Italy",
     "date": "2026-03-06",
     "dateEnd": "2026-03-08",
@@ -35,7 +35,7 @@
   },
   {
     "id": "spotlight_london_2026",
-    "name": "Magic Spotlight Series: Secrets – London 2026",
+    "name": "Spotlight Series London",
     "location": "London, United Kingdom",
     "date": "2026-05-08",
     "dateEnd": "2026-05-10",
@@ -44,7 +44,7 @@
   },
   {
     "id": "commandfest_giessen_2026",
-    "name": "CommandFest Giessen 2026",
+    "name": "CommandFest Giessen",
     "location": "Giessen, Germany",
     "date": "2026-05-22",
     "dateEnd": "2026-05-24",
@@ -53,11 +53,20 @@
   },
   {
     "id": "ugems_rc_prague_2026",
-    "name": "Ultimate Guard European Magic Series – RC Prague 2026",
+    "name": "Regional Championship Prague",
     "location": "Prague, Czech Republic",
     "date": "2026-05-29",
     "dateEnd": "2026-05-31",
     "url": "https://www.fanfinity.gg/event/ultimate-guard-european-magic-series-regional-championship-prague-2026",
+    "artists": []
+  },
+  {
+    "id": "ugems_rc_ghent_2026",
+    "name": "Regional Championship Ghent",
+    "location": "Ghent, Belgium",
+    "date": "2026-10-09",
+    "dateEnd": "2026-10-11",
+    "url": "https://www.fanfinity.gg/event/ultimate-guard-european-magic-series-regional-championship-ghent-2026/",
     "artists": []
   },
   {
@@ -73,7 +82,7 @@
   },
   {
     "id": "magiccon_amsterdam_2026",
-    "name": "MagicCon: Amsterdam 2026",
+    "name": "MagicCon Amsterdam",
     "location": "Amsterdam, Netherlands",
     "date": "2026-07-17",
     "dateEnd": "2026-07-19",
@@ -82,7 +91,7 @@
   },
   {
     "id": "spotlight_brussels_2026",
-    "name": "Magic Spotlight Series: Marvel Super Heroes – Brussels 2026",
+    "name": "Spotlight Series Brussels",
     "location": "Brussels, Belgium",
     "date": "2026-07-24",
     "dateEnd": "2026-07-26",
@@ -100,7 +109,7 @@
   },
   {
     "id": "commandfest_marl_2026",
-    "name": "CommandFest Marl 2026",
+    "name": "CommandFest Marl",
     "location": "Marl, Germany",
     "date": "2026-12-12",
     "dateEnd": "2026-12-14",
